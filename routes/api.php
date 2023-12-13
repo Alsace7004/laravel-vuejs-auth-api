@@ -15,16 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});*/
+});
 
-Route::post('login',[AuthController::class,'login']);
+Route::post('login',[AuthController::class,'login'])->name('login');
 
 //
 Route::get('dashboard',[AuthController::class,'dashboard'])->middleware('auth:sanctum');
 
+//
 Route::get('eleve',function(){
     return 'hello every one';
-});
+})->middleware('auth:sanctum');
 

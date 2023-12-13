@@ -14,15 +14,14 @@ class AuthController extends Controller
     public function login(Request $request):JsonResponse{
         $user = User::where('email',$request->email)->first();
 
-        if(Hash($request->password,$user->password)){
+        if(Hash::check($request->password,$user->password)){
             return response()->json([
                 'token'=>$user->createToken(time())->plainTextToken,
-             
             ]);
         }
     }
 
     public function dashboard(){
-        
+            return "Hello, am the dashboard page";
     }
 }

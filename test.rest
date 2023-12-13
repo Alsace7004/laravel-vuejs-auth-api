@@ -1,0 +1,6 @@
+###
+GET http://localhost:8000/api/dashboard
+###
+POST http://localhost:8000/api/login
+###
+GET http://localhost:8000/api/eleve
