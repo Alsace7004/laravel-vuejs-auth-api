@@ -1,5 +1,5 @@
 <template>
-    <h1>Login</h1>
+  
     <div class="login_container">
         <div class="login_text">Se connecter</div>
         <div class="login_form_input_control">
@@ -42,7 +42,7 @@ export default{
 
 
         loginUser(){
-            this.getToken();
+         
             this.errMessage=''
             this.errors = []
             /*************************************************/

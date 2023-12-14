@@ -1,6 +1,6 @@
 import { createRouter,createWebHistory } from "vue-router";
 import { useAuthStore } from "../store";
-const {token} = useAuthStore()
+
 const routes = [
     {
         path:'/login',
@@ -11,7 +11,8 @@ const routes = [
         path:'/',
         name:'Dashboard',
         component:()=>import("../components/Dashboard.vue"),
-        meta:{requiresAuth:true}
+        meta:{requiresAuth:true},
+      
     }
 ];
 
@@ -23,6 +24,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to,from,next)=>{
+    const {token} = useAuthStore()
     if(to.meta.requiresAuth && !token){
         next({name:'Login'})
     }else{

@@ -18,7 +18,7 @@
     </head>
     <body class="antialiased">
        <div id="app">
-            <router-view>
+          
        </div>
     </body>
 </html>

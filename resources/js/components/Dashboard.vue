@@ -1,7 +1,10 @@
 <template>
-    <router-link :to="'/login'">Login</router-link>
-    <h1>Hello am the dashboard</h1>
-    <button @click="getInformations"> Obtenir mes Informations</button>
+    <button class="btn-dnager" @click="logout">Se Deconnecter</button>
+    <div class="ml">
+            <h1>Hello am the dashboard</h1>
+            <button @click="getInformations"> Obtenir mes Informations</button>
+    </div>
+
 </template>
 
 <script>
@@ -11,10 +14,50 @@ export default{
     name:"Dashboard",
     methods:{
         getInformations(){
-            axiosClient.post('/user')
+            axiosClient.get('/user')
                 .then((res)=>console.log("Valeur de res dans getInformation :",res))
                 .catch((err)=>{console.log('Valeur de err : ',err)})
-        }
+        },
+
+        logout() {
+            //alert("hited !!!")
+            axiosClient
+                .post("api/logout")
+                .then((res) => {
+                //console.log("Valeur de res dans logout:", res);
+                if (res.data.status) {
+                    //Swal.fire('Deconnexion!','Deconnexion reussi !!!.','success');
+                    userStore.clearUser();
+                    localStorage.removeItem("auth");
+                    localStorage.clear();
+                    //this.$router.push("/login");
+                    router.push({ path: "/login" });
+                }
+                })
+                .catch((err) => {
+                //console.log("Valeur de error dans logout:", err);
+                });
+            }
     }
 }
 </script>
+
+
+<style scoped>
+    .btn-dnager{
+        border: 0.2rem solid #21184b;
+        padding: 0.5rem 2rem;
+        margin: 2rem;
+        border-radius: .2rem;
+        background: #453689;
+        color: #fff;
+        transition: 0.5s ease-in-out
+    }
+    .btn-dnager:hover{
+        background: #21184b;
+          border: 0.2rem solid #453689;
+    }
+    .ml{
+            margin-left: 2rem;
+    }
+</style>
