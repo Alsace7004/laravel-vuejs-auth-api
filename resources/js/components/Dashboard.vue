@@ -20,24 +20,23 @@ export default{
         },
 
         logout() {
-            //alert("hited !!!")
-            axiosClient
-                .post("api/logout")
+             
+             
+                axios.post("logout",null,{
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                    }
+                })
                 .then((res) => {
-                //console.log("Valeur de res dans logout:", res);
-                if (res.data.status) {
-                    //Swal.fire('Deconnexion!','Deconnexion reussi !!!.','success');
-                    userStore.clearUser();
                     localStorage.removeItem("auth");
                     localStorage.clear();
-                    //this.$router.push("/login");
-                    router.push({ path: "/login" });
-                }
+                    this.$router.push("/login");
+                    //router.push({ path: "/login" });
                 })
                 .catch((err) => {
-                //console.log("Valeur de error dans logout:", err);
+                    //console.log("Valeur de error dans logout:", err);
                 });
-            }
+        }
     }
 }
 </script>

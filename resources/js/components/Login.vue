@@ -52,7 +52,7 @@ export default{
             this.loading =  true
             /*************************************************/
             axios.get('/sanctum/csrf-cookie').then(response => {
-                    axios.post('api/login',this.user).then((res)=>{
+                    axios.post('login',this.user).then((res)=>{
                         localStorage.clear(); 
                         /*************************************************/
                         login_btn.classList.remove("loading");

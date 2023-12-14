@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/{all}', function () {
     return view('welcome');
 })->where('all','.*');
+
+Route::post('login',[AuthController::class,'login'])->name('login');
+Route::post('logout',[AuthController::class,'logout']);
