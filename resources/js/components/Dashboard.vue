@@ -1,8 +1,8 @@
 <template>
-    <button class="btn-dnager" @click="logout">Se Deconnecter</button>
+    <button class="btn btn-danger" @click="logout">Se Deconnecter</button>
     <div class="ml">
             <h1>Hello am the dashboard</h1>
-            <button @click="getInformations"> Obtenir mes Informations</button>
+            <button class="btn-primary" @click="getInformations"> Obtenir mes Informations</button>
     </div>
 
 </template>
@@ -43,7 +43,30 @@ export default{
 
 
 <style scoped>
-    .btn-dnager{
+    .btn{
+        
+        padding: 0.5rem 2rem;
+        margin: 2rem;
+        border-radius: .2rem;
+        background: transparent;
+        transition: 0.5s ease-in-out
+    }
+    /***/
+    .btn-danger{
+        border: 0.2rem solid #4b1b18;
+        padding: 0.5rem 2rem;
+        margin: 2rem;
+        border-radius: .2rem;
+        background: #8a2802;
+        color: #fff;
+        transition: 0.5s ease-in-out
+    }
+    .btn-danger:hover{
+        background: #c53b05;
+        border: 0.2rem solid #453689;
+    }
+    /***/
+    .btn-primary{
         border: 0.2rem solid #21184b;
         padding: 0.5rem 2rem;
         margin: 2rem;
@@ -52,10 +75,11 @@ export default{
         color: #fff;
         transition: 0.5s ease-in-out
     }
-    .btn-dnager:hover{
+    .btn-primary:hover{
         background: #21184b;
           border: 0.2rem solid #453689;
     }
+    /***/
     .ml{
             margin-left: 2rem;
     }
